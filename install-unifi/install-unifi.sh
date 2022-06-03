@@ -4,7 +4,7 @@
 # Installs the Uni-Fi controller software on a FreeBSD machine (presumably running pfSense).
 
 # The latest version of UniFi:
-UNIFI_SOFTWARE_URL="https://dl.ui.com/unifi/6.5.55/UniFi.unix.zip"
+UNIFI_SOFTWARE_URL="https://dl.ui.com/unifi/7.1.66/UniFi.unix.zip"
 
 
 # The rc script associated with this branch or fork:
@@ -27,10 +27,10 @@ fi
 ABI=`/usr/sbin/pkg config abi`
 
 # FreeBSD package source:
-FREEBSD_PACKAGE_URL="https://pkg.freebsd.org/${ABI}/latest/All/"
+FREEBSD_PACKAGE_URL="https://mirrors.xtom.nl${ABI}/latest/All/"
 
 # FreeBSD package list:
-FREEBSD_PACKAGE_LIST_URL="https://pkg.freebsd.org/${ABI}/latest/packagesite.txz"
+FREEBSD_PACKAGE_LIST_URL="https://mirrors.xtom.nl${ABI}/latest/packagesite.txz"
 
 # Stop the controller if it's already running...
 # First let's try the rc script if it exists:
