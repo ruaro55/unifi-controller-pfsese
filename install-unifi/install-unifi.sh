@@ -8,7 +8,7 @@ UNIFI_SOFTWARE_URL="https://dl.ui.com/unifi/7.1.66/UniFi.unix.zip"
 
 
 # The rc script associated with this branch or fork:
-RC_SCRIPT_URL="https://github.com/ruaro55/unifi-controller-pfsese/blob/master/install-unifi/install-unifi.sh"
+RC_SCRIPT_URL="https://raw.githubusercontent.com/gozoinks/unifi-pfsense/master/rc.d/unifi.sh"
 
 # If pkg-ng is not yet installed, bootstrap it:
 if ! /usr/sbin/pkg -N 2> /dev/null; then
@@ -27,10 +27,10 @@ fi
 ABI=`/usr/sbin/pkg config abi`
 
 # FreeBSD package source:
-FREEBSD_PACKAGE_URL="https://mirrors.xtom.nl${ABI}/latest/All/"
+FREEBSD_PACKAGE_URL="https://pkg.freebsd.org/${ABI}/latest/All/"
 
 # FreeBSD package list:
-FREEBSD_PACKAGE_LIST_URL="https://mirrors.xtom.nl${ABI}/latest/packagesite.txz"
+FREEBSD_PACKAGE_LIST_URL="https://pkg.freebsd.org/${ABI}/latest/packagesite.txz"
 
 # Stop the controller if it's already running...
 # First let's try the rc script if it exists:
@@ -123,7 +123,7 @@ AddPkg () {
  	if [ `pkg info | grep -c $pkgname-$pkgvers` -eq 1 ]; then
 	     echo "Package $pkgname-$pkgvers already installed."
 	else
-	     env ASSUME_ALWAYS_YES=YES /usr/sbin/pkg add -f ${FREEBSD_PACKAGE_URL}${pkgname}-${pkgvers}.pkg
+	     env ASSUME_ALWAYS_YES=YES /usr/sbin/pkg add -f ${FREEBSD_PACKAGE_URL}${pkgname}-${pkgvers}.txz
 
 	     # if update openjdk8 then force detele snappyjava to reinstall for new version of openjdk
 	     if [ "$pkgname" == "openjdk8" ]; then
